@@ -1,0 +1,23 @@
+services:
+  caddy:
+    build:
+      context: ..
+      dockerfile: docker/caddy/Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
+
+  proxy:
+    build:
+      context: ../proxy
+      dockerfile: ../docker/proxy/Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+
+volumes:
+  caddy-data:
+  caddy-config:

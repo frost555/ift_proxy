@@ -1,0 +1,22 @@
+example.com {
+
+	@auth path /oauth2* /oidc* /v1/oauth2* /v2/oauth2*
+	handle @auth {
+		reverse_proxy https://sso.if.test.vtb.ru
+	}
+
+	@backend path /services* /msa* /mf* /async* /processor* /content* /webauth* /routing*
+	handle @backend {
+		reverse_proxy https://online.if.test.vtb.ru
+	}
+
+	@hcms path /projects*
+	handle @hcms {
+		reverse_proxy https://h.if.vtb.ru
+	}
+
+	handle {
+		reverse_proxy localhost:3000
+	}
+
+}

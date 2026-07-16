@@ -1,0 +1,41 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.history
+
+# production
+/build
+
+# mocking
+/mocks
+
+# app
+.idea/
+.vs/
+.vscode/
+./tmp
+*.iml
+*.versionsBackup
+.eslintcache
+*~
+
+# docs
+GOAL.md
+
+# certificates
+*.crt
+*.key
+*.pem
+
+# misc
+.env.*
+
+# types
+/@mf-types/*
+# игнорируем хост типы
+!@mf-types/mf_1488_core.d.ts
+!@mf-types/mf_1488_legacy.d.ts
+
+# production
+stats.json
