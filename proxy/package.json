@@ -4,19 +4,22 @@
   "description": "",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "build": "esbuild src/server.ts --bundle --platform=node --packages=external --outdir=dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^5.2.1",
     "node-fetch": "^3.3.2",
-    "qs": "^6.15.3"
+    "qs": "^6.15.3",
+    "typescript": "^7.0.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.1.1",
-    "@types/qs": "^6.15.1"
+    "@types/qs": "^6.15.1",
+    "esbuild": "^0.28.1"
   }
 }

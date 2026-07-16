@@ -6,13 +6,14 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
+      - ../caddy-example/Caddyfile:/etc/caddy/Caddyfile
       - caddy-data:/data
       - caddy-config:/config
 
   proxy:
     build:
-      context: ../proxy
-      dockerfile: ../docker/proxy/Dockerfile
+      context: ..
+      dockerfile: docker/proxy/Dockerfile
     network_mode: host
     restart: unless-stopped
     environment:

@@ -38,8 +38,10 @@ git clone https://github.com/<user>/<repo>.git /opt/ift-proxy
 ```bash
 cd /opt/ift-proxy
 cp docker/.env.example docker/.env
-# отредактируйте docker/.env при необходимости
+# отредактируйте docker/.env при необходимости (PORT=3000)
 ```
+
+Замените `example.com` в `caddy-example/Caddyfile` на реальный домен.
 
 ### 2. Сборка и запуск
 
@@ -78,7 +80,7 @@ docker compose up --build -d
 
 ## Обновление конфигурации Caddy
 
-Caddy запущен с флагом `--watch` — изменения в `Caddyfile` применяются автоматически.
+Caddyfile примонтирован из `caddy-example/Caddyfile` и запущен с флагом `--watch` — изменения в файле применяются автоматически без перезапуска контейнера.
 
 Для ручного перезапуска:
 

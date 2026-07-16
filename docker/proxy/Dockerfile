@@ -1,15 +1,14 @@
 # ---- Build stage ----
 FROM node:20-alpine AS build
 
-WORKDIR /app
+WORKDIR /app/proxy
 
-COPY package.json package-lock.json ./
+COPY proxy/package.json proxy/package-lock.json ./
 RUN npm ci
 
-COPY tsconfig.json ./
-COPY src/ src/
+COPY proxy/src/ src/
 
-RUN npx tsc
+RUN npm run build
 
 # ---- Production stage ----
 FROM node:20-alpine
@@ -18,14 +17,13 @@ USER root
 
 WORKDIR /app
 
-COPY --from=build /app/package.json /app/package-lock.json ./
+COPY --from=build /app/proxy/package.json /app/proxy/package-lock.json ./
 RUN npm ci --omit=dev
 
-COPY --from=build /app/src ./src
-COPY --from=build /app/dist ./dist
+COPY --from=build /app/proxy/dist ./dist
 
 ENV PORT=3000
 
 EXPOSE 3000
 
-CMD ["node", "src/server.js"]
+CMD ["node", "dist/server.js"]
