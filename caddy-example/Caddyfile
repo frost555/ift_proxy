@@ -4,6 +4,8 @@
 
 ift.balkdalk1778.ru {
 
+	log
+
 	@auth path /oauth2* /oidc* /v1/oauth2* /v2/oauth2*
 	@backend path /services* /msa* /async* /processor* /content* /webauth* /routing*
 	@mf path /mf*
