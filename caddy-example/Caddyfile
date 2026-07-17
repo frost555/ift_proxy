@@ -26,8 +26,11 @@ ift.balkdalk1778.ru {
 				transport http {
 					tls
 					tls_insecure_skip_verify
-					protocols h1
 				}
+				header_up -X-Forwarded-For
+				header_up -X-Forwarded-Host
+				header_up -X-Forwarded-Proto
+				header_up -X-Real-IP
 			}
 		}
 
