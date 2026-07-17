@@ -2,7 +2,7 @@
 	admin localhost:2020
 }
 
-example.com {
+ift.balkdalk1778.ru {
 
 	@auth path /oauth2* /oidc* /v1/oauth2* /v2/oauth2*
 	handle @auth {
