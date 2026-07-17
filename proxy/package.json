@@ -7,7 +7,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/server.ts --bundle --platform=node --packages=external --outdir=dist",
+    "build": "esbuild src/server.ts --bundle --platform=node --packages=external --format=esm --outdir=dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
