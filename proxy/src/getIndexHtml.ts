@@ -13,6 +13,11 @@ export const getIndexHtml = async (
 
   const fileNames = ["remoteEntry.js", ...manifest];
 
+  // Patch: force empty parb_lock_orc_url to route requests through local proxy
+  if (coreSettings.vtbid_settings) {
+    coreSettings.vtbid_settings.parb_lock_orc_url = "";
+  }
+
   return `<!DOCTYPE html>
     <html lang="en">
     <head>
