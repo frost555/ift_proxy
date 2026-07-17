@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import { tlsAgent } from "./tlsAgent";
 
 export const getIndexHtml = async (
   coreSettings: Record<string, Record<string, string>>,
@@ -8,6 +9,7 @@ export const getIndexHtml = async (
   const hostVersion = coreSettings["mf_versions_platform"]["mf_1488_core"];
   const res = await fetch(
     `https://online.if.test.vtb.ru/mf/${hostName}/${hostVersion}/assets-manifest.json`,
+    { agent: tlsAgent },
   );
   const manifest = await res.json();
 
