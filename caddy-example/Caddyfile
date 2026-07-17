@@ -57,7 +57,7 @@ ift.balkdalk1778.ru {
 		}
 
 		route @hcms {
-			reverse_proxy https://h.if.vtb.ru {
+			reverse_proxy https://h1-if.vtb.ru {
 				transport http {
 					tls
 					tls_insecure_skip_verify

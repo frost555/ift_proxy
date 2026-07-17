@@ -36,7 +36,7 @@ var vtb24Config = {
   "coreSettingsVersion": "",
   "forceUseFocusGroupCheck": false,
   "allowFunctionSettings": true,
-  "cmsUrl": "https://h.if.vtb.ru",
+  "cmsUrl": "https://h1-if.vtb.ru",
   "mobileBankServerUrl": "https://mb.if.test.vtb.ru",
   "pfrServerUrl": "https://online.if.test.vtb.ru/",
   "debitCards":{
@@ -111,7 +111,7 @@ var vtbConfig = {
   "authSSO":{
     "WSO2": "https://ift-ibrb1-sharing.vtb.ru"
   },
-  "cmsUrl": "https://h.if.vtb.ru"
+  "cmsUrl": "https://h1-if.vtb.ru"
 }
 
 var vtbRFConfig = {
@@ -127,7 +127,7 @@ var vtbRFConfig = {
   "authSSO":{
     "WSO2": "https://ift-ibrb1-sharing.vtb.ru"
   },
-  "cmsUrl": "https://h.if.vtb.ru"
+  "cmsUrl": "https://h1-if.vtb.ru"
 }
 
 function checkHostname(hostname) {

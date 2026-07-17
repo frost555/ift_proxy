@@ -7,7 +7,7 @@
            ├── статические файлы          → caddy-example/public/
            ├── /oauth2*, /oidc*, ...     → SSO (https://sso.if.test.vtb.ru)
            ├── /services*, /msa*, ...    → Backend (https://online.if.test.vtb.ru)
-           ├── /projects*                → HCMS (https://h.if.vtb.ru)
+           ├── /projects*                → HCMS (https://h1-if.vtb.ru)
            └── всё остальное             → proxy (localhost:3000)
 
 proxy (Node.js, порт 3000)
