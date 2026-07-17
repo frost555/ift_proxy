@@ -4,6 +4,7 @@
 
 ```
 Клиент → Caddy (порт 80/443)
+           ├── статические файлы          → caddy-example/public/
            ├── /oauth2*, /oidc*, ...     → SSO (https://sso.if.test.vtb.ru)
            ├── /services*, /msa*, ...    → Backend (https://online.if.test.vtb.ru)
            ├── /projects*                → HCMS (https://h.if.vtb.ru)
@@ -80,7 +81,10 @@ docker compose up --build -d
 
 ## Обновление конфигурации Caddy
 
-Caddyfile примонтирован из `caddy-example/Caddyfile` и запущен с флагом `--watch` — изменения в файле применяются автоматически без перезапуска контейнера.
+Caddyfile и статические файлы примонтированы и запущены с флагом `--watch` — изменения применяются автоматически без перезапуска контейнера.
+
+- `caddy-example/Caddyfile` → `/etc/caddy/Caddyfile`
+- `caddy-example/public/` → `/public` (статические файлы: шрифты, CSS, JS)
 
 Для ручного перезапуска:
 

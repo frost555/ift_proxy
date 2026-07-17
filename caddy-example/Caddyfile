@@ -24,6 +24,11 @@ ift.balkdalk1778.ru {
 		reverse_proxy https://h.if.vtb.ru
 	}
 
+	route {
+		root * public
+		file_server pass_thru
+	}
+
 	handle {
 		reverse_proxy localhost:3000
 	}

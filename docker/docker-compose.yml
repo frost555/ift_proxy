@@ -7,6 +7,7 @@ services:
     restart: unless-stopped
     volumes:
       - ../caddy-example/Caddyfile:/etc/caddy/Caddyfile
+      - ../caddy-example/public:/public
       - caddy-data:/data
       - caddy-config:/config
 
