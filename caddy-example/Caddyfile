@@ -12,12 +12,24 @@ ift.balkdalk1778.ru {
 			pass_thru
 		}
 
-		reverse_proxy /oauth2* /oidc* /v1/oauth2* /v2/oauth2* https://sso.if.test.vtb.ru
-		reverse_proxy /services* /msa* /async* /processor* /content* /webauth* /routing* https://online.if.test.vtb.ru {
-			header_up User-Agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+		route /oauth2* /oidc* /v1/oauth2* /v2/oauth2* {
+			reverse_proxy https://sso.if.test.vtb.ru
 		}
-		reverse_proxy /mf* https://s1-if.vtbgroup.com
-		reverse_proxy /projects* https://h.if.vtb.ru
+
+		route /services* /msa* /async* /processor* /content* /webauth* /routing* {
+			reverse_proxy https://online.if.test.vtb.ru {
+				header_up User-Agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+			}
+		}
+
+		route /mf* {
+			reverse_proxy https://s1-if.vtbgroup.com
+		}
+
+		route /projects* {
+			reverse_proxy https://h.if.vtb.ru
+		}
+
 		reverse_proxy localhost:3000
 	}
 
