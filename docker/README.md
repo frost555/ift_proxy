@@ -26,7 +26,7 @@ proxy (Node.js, порт 3000)
 Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/<user>/<repo>.git /opt/ift-proxy
+git clone https://github.com/frost555/ift_proxy.git /opt/ift-proxy
 ```
 
 ## Быстрый старт
