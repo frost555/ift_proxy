@@ -50,7 +50,7 @@ async function getHtml(): Promise<string> {
 
 const app = express();
 
-app.get("*", async (_req: Request, res: Response) => {
+app.get("*path", async (_req: Request, res: Response) => {
   try {
     const html = await getHtml();
     res.send(html);
