@@ -9,9 +9,14 @@ ift.balkdalk1778.ru {
 		reverse_proxy https://sso.if.test.vtb.ru
 	}
 
-	@backend path /services* /msa* /mf* /async* /processor* /content* /webauth* /routing*
+	@backend path /services* /msa* /async* /processor* /content* /webauth* /routing*
 	handle @backend {
 		reverse_proxy https://online.if.test.vtb.ru
+	}
+
+  @mf path /mf*
+	handle @mf {
+		reverse_proxy https://s1-if.vtbgroup.com
 	}
 
 	@hcms path /projects*
