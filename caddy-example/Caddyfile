@@ -18,7 +18,16 @@ ift.balkdalk1778.ru {
 		}
 
 		route @auth {
-			reverse_proxy https://sso.if.test.vtb.ru
+			reverse_proxy https://sso.if.test.vtb.ru {
+				transport http {
+					tls
+					tls_insecure_skip_verify
+				}
+				header_up -X-Forwarded-For
+				header_up -X-Forwarded-Host
+				header_up -X-Forwarded-Proto
+				header_up -X-Real-IP
+			}
 		}
 
 		route @backend {
@@ -35,11 +44,29 @@ ift.balkdalk1778.ru {
 		}
 
 		route @mf {
-			reverse_proxy https://s1-if.vtbgroup.com
+			reverse_proxy https://s1-if.vtbgroup.com {
+				transport http {
+					tls
+					tls_insecure_skip_verify
+				}
+				header_up -X-Forwarded-For
+				header_up -X-Forwarded-Host
+				header_up -X-Forwarded-Proto
+				header_up -X-Real-IP
+			}
 		}
 
 		route @hcms {
-			reverse_proxy https://h.if.vtb.ru
+			reverse_proxy https://h.if.vtb.ru {
+				transport http {
+					tls
+					tls_insecure_skip_verify
+				}
+				header_up -X-Forwarded-For
+				header_up -X-Forwarded-Host
+				header_up -X-Forwarded-Proto
+				header_up -X-Real-IP
+			}
 		}
 
 		reverse_proxy localhost:3000
