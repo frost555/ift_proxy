@@ -5,34 +5,35 @@
 ift.balkdalk1778.ru {
 
 	@auth path /oauth2* /oidc* /v1/oauth2* /v2/oauth2*
-	handle @auth {
-		reverse_proxy https://sso.if.test.vtb.ru
-	}
-
 	@backend path /services* /msa* /async* /processor* /content* /webauth* /routing*
-	handle @backend {
-		reverse_proxy https://online.if.test.vtb.ru
-	}
-
-  @mf path /mf*
-	handle @mf {
-		reverse_proxy https://s1-if.vtbgroup.com
-	}
-
+	@mf path /mf*
 	@hcms path /projects*
-	handle @hcms {
-		reverse_proxy https://h.if.vtb.ru
-	}
 
 	route {
 		root * public
 		file_server {
 			pass_thru
 		}
-	}
 
-	handle {
-		reverse_proxy localhost:3000
+		handle @auth {
+			reverse_proxy https://sso.if.test.vtb.ru
+		}
+
+		handle @backend {
+			reverse_proxy https://online.if.test.vtb.ru
+		}
+
+		handle @mf {
+			reverse_proxy https://s1-if.vtbgroup.com
+		}
+
+		handle @hcms {
+			reverse_proxy https://h.if.vtb.ru
+		}
+
+		handle {
+			reverse_proxy localhost:3000
+		}
 	}
 
 }
