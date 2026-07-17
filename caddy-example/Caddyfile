@@ -22,9 +22,8 @@ ift.balkdalk1778.ru {
 		}
 
 		route @backend {
-			reverse_proxy https://online.if.test.vtb.ru {
-				header_up User-Agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
-			}
+			request_header User-Agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+			reverse_proxy https://online.if.test.vtb.ru
 		}
 
 		route @mf {
