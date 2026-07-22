@@ -25,7 +25,7 @@ export const getIndexHtml = async (
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, viewport-fit=cover" />
-        <title>viva la ift</title>
+        <title>Интернет-банк ВТБ Онлайн</title>
         <link rel="stylesheet" href="/fonts.css" />
         <script src="/config.js"></script>
         ${fileNames.map((fileName) => `<script src='/mf/${hostName}/${hostVersion}/${fileName}' defer="true"></script>`).join("\n")}
