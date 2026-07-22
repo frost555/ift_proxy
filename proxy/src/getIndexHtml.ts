@@ -1,18 +1,6 @@
 import fetch from "node-fetch";
 import { tlsAgent } from "./tlsAgent";
 
-function isLessVersion(versionA: string, versionB: string): boolean {
-  const partsA = versionA.split(".").map(Number);
-  const partsB = versionB.split(".").map(Number);
-  const maxLen = Math.max(partsA.length, partsB.length);
-  for (let i = 0; i < maxLen; i++) {
-    const a = partsA[i] ?? 0;
-    const b = partsB[i] ?? 0;
-    if (a < b) return true;
-    if (a > b) return false;
-  }
-  return false;
-}
 
 export const getIndexHtml = async (
   coreSettings: Record<string, Record<string, string>>,
@@ -31,13 +19,6 @@ export const getIndexHtml = async (
   // Patch: force empty parb_lock_orc_url to route requests through local proxy
   if (coreSettings.vtbid_settings) {
     coreSettings.vtbid_settings.parb_lock_orc_url = "";
-  }
-
-  // Patch: enforce minimum budget version
-  const paymentsVersions = coreSettings.mf_versions_payments;
-  const budgetV = paymentsVersions?.mf_1416_pmnt_acceptance_budget;
-  if (paymentsVersions && budgetV && isLessVersion(budgetV, "0.13.14")) {
-    paymentsVersions.mf_1416_pmnt_acceptance_budget = "0.13.14";
   }
   return `<!DOCTYPE html>
     <html lang="en">
