@@ -1,13 +1,10 @@
-import { readFileSync } from "fs";
-
 export const getIndexHtml = async (
   coreSettings: Record<string, Record<string, string>>,
 ) => {
   const hostName = "mf_1488_core";
   const hostVersion = "1.1.1"; // hardcoded — served from /public/mf/mf_1488_core/1.1.1/
 
-  const manifestPath = "../caddy-example/public/mf/mf_1488_core/1.1.1/assets-manifest.json";
-  const manifest: string[] = JSON.parse(readFileSync(manifestPath, "utf8"));
+  const manifest = ["static/js/runtime.c56447f4.js", "static/js/sources.40ab34f6.js", "static/js/main.3628fb8f.js"];
 
   const fileNames = ["remoteEntry.js", ...manifest];
 
