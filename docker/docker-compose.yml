@@ -8,6 +8,7 @@ services:
     volumes:
       - ../caddy-example/Caddyfile:/etc/caddy/Caddyfile
       - ../caddy-example/public:/public
+      - ../caddy-example/mf_core:/mf_core
       - caddy-data:/data
       - caddy-config:/config
 
