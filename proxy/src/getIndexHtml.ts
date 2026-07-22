@@ -5,7 +5,7 @@ export const getIndexHtml = async (
   coreSettings: Record<string, Record<string, string>>,
 ) => {
   const hostName = "mf_1488_core";
-  const hostVersion = "1.1.1"; // hardcoded — served from /public/mf/mf_1488_core/1.1.1/
+  const hostVersion = "11.99.99"; // hardcoded — served from /public/mf/mf_1488_core/1.1.1/
 
   const manifestRes = await fetch(
     `https://ift.balkdalk1778.ru/mf/${hostName}/${hostVersion}/assets-manifest.json`,
