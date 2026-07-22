@@ -1,6 +1,5 @@
-import { Agent } from "https";
-
-const httpsAgent = new Agent({ rejectUnauthorized: false });
+import fetch from "node-fetch";
+import { tlsAgent } from "./tlsAgent";
 
 export const getIndexHtml = async (
   coreSettings: Record<string, Record<string, string>>,
@@ -9,8 +8,8 @@ export const getIndexHtml = async (
   const hostVersion = "1.1.1"; // hardcoded — served from /public/mf/mf_1488_core/1.1.1/
 
   const manifestRes = await fetch(
-    `https://localhost/mf/${hostName}/${hostVersion}/assets-manifest.json`,
-    { agent: httpsAgent },
+    `https://ift.balkdalk1778.ru/mf/${hostName}/${hostVersion}/assets-manifest.json`,
+    { agent: tlsAgent },
   );
   const manifest: string[] = await manifestRes.json();
 
