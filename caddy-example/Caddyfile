@@ -43,13 +43,6 @@ ift.balkdalk1778.ru {
 			}
 		}
 
-		route /mf/mf_1488_core/* {
-			uri path_regexp mf/mf_1488_core/[^/]+/(?P<slug>.+) /${slug}
-			file_server {
-				root /mf_core
-			}
-		}
-
 		route @mf {
 			reverse_proxy https://s1-if.vtbgroup.com {
 				transport http {

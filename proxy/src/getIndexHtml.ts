@@ -1,17 +1,13 @@
-import fetch from "node-fetch";
-import { tlsAgent } from "./tlsAgent";
+import { readFileSync } from "fs";
 
 export const getIndexHtml = async (
   coreSettings: Record<string, Record<string, string>>,
 ) => {
   const hostName = "mf_1488_core";
+  const hostVersion = "1.1.1"; // hardcoded — served from /public/mf/mf_1488_core/1.1.1/
 
-  const hostVersion = coreSettings["mf_versions_platform"]["mf_1488_core"];
-  const res = await fetch(
-    `https://online.if.test.vtb.ru/mf/${hostName}/${hostVersion}/assets-manifest.json`,
-    { agent: tlsAgent },
-  );
-  const manifest = await res.json();
+  const manifestPath = "../caddy-example/public/mf/mf_1488_core/1.1.1/assets-manifest.json";
+  const manifest: string[] = JSON.parse(readFileSync(manifestPath, "utf8"));
 
   const fileNames = ["remoteEntry.js", ...manifest];
 
