@@ -1,10 +1,18 @@
+import { Agent } from "https";
+
+const httpsAgent = new Agent({ rejectUnauthorized: false });
+
 export const getIndexHtml = async (
   coreSettings: Record<string, Record<string, string>>,
 ) => {
   const hostName = "mf_1488_core";
   const hostVersion = "1.1.1"; // hardcoded — served from /public/mf/mf_1488_core/1.1.1/
 
-  const manifest = ["static/js/runtime.c56447f4.js", "static/js/sources.40ab34f6.js", "static/js/main.3628fb8f.js"];
+  const manifestRes = await fetch(
+    `https://localhost/mf/${hostName}/${hostVersion}/assets-manifest.json`,
+    { agent: httpsAgent },
+  );
+  const manifest: string[] = await manifestRes.json();
 
   const fileNames = ["remoteEntry.js", ...manifest];
 
